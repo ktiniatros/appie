@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+apply from: 'versions.gradle'
+
+android {
+    compileSdkVersion rootProject.targetSdkVersion
+    defaultConfig {
+        applicationId "nl.giorgos.appie"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$androidSupportAppCompat7Version"
+    implementation "com.android.support:design:$androidSupportAppCompat7Version"
+    implementation "com.android.support:recyclerview-v7:$androidSupportAppCompat7Version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$gsonConverterVersion"
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
+    implementation "com.squareup.picasso:picasso:$picassoVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoCoreVersion"
+    androidTestImplementation "com.google.dagger:dagger:$daggerVersion"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+
+}

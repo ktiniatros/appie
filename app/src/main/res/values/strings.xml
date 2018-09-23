@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Appie</string>
+
+    <string name="news_api_key">84a52ff770b64d8795f499535315cb16</string>
+
+    <string name="offline">You are offline</string>
+
+    <string name="image_description">An image from the current news</string>
+</resources>

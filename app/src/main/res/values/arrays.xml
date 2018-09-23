@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="flags">
+        <item name="us">🇺🇸</item>
+        <item name="gb">🇬🇧</item>
+        <item name="fr">🇫🇷</item>
+        <item name="nl">🇳🇱</item>
+        <item name="de">🇩🇪</item>
+        <item name="gr">🇬🇷</item>
+        <item name="jp">🇯🇵</item>
+        <item name="ru">🇷🇺</item>
+        <item name="au">🇦🇺</item>
+        <item name="ph">🇵🇭</item>
+        <item name="pl">🇵🇱</item>
+        <item name="pt">🇵🇹</item>
+        <item name="ro">🇷🇴</item>
+        <item name="rs">🇷🇸</item>
+        <item name="sa">🇸🇦</item>
+        <item name="se">🇸🇪</item>
+    </string-array>
+
+    <string-array name="countries">
+        <item name="us">us</item>
+        <item name="gb">gb</item>
+        <item name="fr">fr</item>
+        <item name="nl">nl</item>
+        <item name="de">de</item>
+        <item name="gr">gr</item>
+        <item name="jp">jp</item>
+        <item name="ru">ru</item>
+        <item name="au">au</item>
+        <item name="ph">ph</item>
+        <item name="pl">pl</item>
+        <item name="pt">pt</item>
+        <item name="ro">ro</item>
+        <item name="rs">rs</item>
+        <item name="sa">sa</item>
+        <item name="se">se</item>
+    </string-array>
+</resources>
