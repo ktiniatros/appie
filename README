@@ -1,6 +1,6 @@
-# Sample Android MPV project
+# Sample Android MVP project
 
-This is a sample MPV architectured android app. It is comprised of three screens:
+This is a sample MVP architectured android app. It is comprised of three screens:
   - An entry selection screen (with hardcoded categories). Select one of the flags to go further.
   - An articles list fetched from newsapi.org using the country selected from the previous screen.
   - A detail view screen displaying the title, an image and the content of the article selected on the previous screen.
