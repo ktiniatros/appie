@@ -1,7 +1,5 @@
 package nl.giorgos.appie;
 
-import java.util.List;
-
 import nl.giorgos.appie.country_news_list.CountryNews;
 import retrofit2.Call;
 import retrofit2.http.GET;

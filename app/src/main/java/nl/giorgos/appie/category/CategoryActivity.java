@@ -7,11 +7,8 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.Arrays;
 
-import javax.inject.Inject;
-
 import butterknife.BindArray;
 import butterknife.BindView;
-import nl.giorgos.appie.NewsFetcher;
 import nl.giorgos.appie.R;
 import nl.giorgos.appie.base.BaseActivity;
 import nl.giorgos.appie.country_news_list.CountryNewsListActivity;
@@ -26,9 +23,6 @@ public class CategoryActivity extends BaseActivity implements CategoryContract.V
 
     @BindArray(R.array.countries)
     String[] countryCodes;
-
-    @Inject
-    NewsFetcher newsFetcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

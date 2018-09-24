@@ -56,7 +56,8 @@ public class CountryNewsPresenter implements CountryNewsListContract.Presenter, 
     @Override
     public void onRefresh() {
         view.showRefreshLayout();
-        newsFetcher.news(HEADLINES_PATH, countryCode, apiKey).enqueue(new Callback<CountryNews>() {
+        Call<CountryNews> countryNewsCall = newsFetcher.news(HEADLINES_PATH, countryCode, apiKey);
+        countryNewsCall.enqueue(new Callback<CountryNews>() {
             @Override
             public void onResponse(@NonNull Call<CountryNews> call, @NonNull Response<CountryNews> response) {
                 view.hideRefreshLayout();
@@ -75,7 +76,6 @@ public class CountryNewsPresenter implements CountryNewsListContract.Presenter, 
             @Override
             public void onFailure(@NonNull Call<CountryNews> call, @NonNull Throwable t) {
                 view.hideRefreshLayout();
-                t.printStackTrace();
             }
         });
     }

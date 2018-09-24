@@ -1,6 +1,5 @@
 package nl.giorgos.appie.base;
 
-import android.net.ConnectivityManager;
 import android.support.annotation.NonNull;
 
 import nl.giorgos.appie.NetworkReceiver;

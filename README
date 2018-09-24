@@ -1,0 +1,14 @@
+# Sample Android MPV project
+
+This is a sample MPV architectured android app. It is comprised of three screens:
+  - An entry selection screen (with hardcoded categories). Select one of the flags to go further.
+  - An articles list fetched from newsapi.org using the country selected from the previous screen.
+  - A detail view screen displaying the title, an image and the content of the article selected on the previous screen.
+  - All screens support providing feedback to the user about the connectivity status (online/offline).
+
+Every feature (and subsequently every screen/activity) has to follow the contract defined. The activity is implementing the view part of the contract and the presenter of the activity is implementing the presenter part of the contract.
+All the business logic lies in the presenters which are independent from pure Android components (eg Views) thus making them easier and faster testable. This satisfies also the wanted separation of concerns which results to easier maintainable and changable code.
+The activities hold the minimum required code, the one interacting with the android components (context, views etc).
+  - All classes which are independent of the android lifecycle (presenters etc) are unit tested with the help of junit and mockito
+  - The rest of the code which needs an actual android context is tested with the help of AndroidJUnit and Espresso.
+  - Dagger is used for dependencies injection to create them easier and to mock them easier in the ui tests.

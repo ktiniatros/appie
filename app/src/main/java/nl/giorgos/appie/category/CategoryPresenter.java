@@ -1,6 +1,5 @@
 package nl.giorgos.appie.category;
 
-
 import android.support.annotation.NonNull;
 
 import nl.giorgos.appie.country_news_list.CountryNewsListActivity;

@@ -40,7 +40,7 @@ public class NetworkReceiverTest {
     }
 
     @Test
-    public void onReceive_listenerAdded_isConnected_listenerConnectivityChangedIsCalledTwice() throws Exception {
+    public void onReceive_listenerAdded_isConnected_listenerConnectivityChangedIsCalledTwice() {
         // arrange
         networkReceiver = new NetworkReceiver(connectivityManager);
         networkReceiver.addListener(networkListener);
@@ -53,7 +53,7 @@ public class NetworkReceiverTest {
     }
 
     @Test
-    public void onReceive_listenerAdded_isNotConnected_listenerConnectivityChanged() throws Exception {
+    public void onReceive_listenerAdded_isNotConnected_listenerConnectivityChanged() {
         // arrange
         networkReceiver = new NetworkReceiver(connectivityManager);
         networkReceiver.addListener(networkListener);
@@ -67,7 +67,7 @@ public class NetworkReceiverTest {
     }
 
     @Test
-    public void addListener_addListenerTwice_listenerIsNotifiedOnce() throws Exception {
+    public void addListener_addListenerTwice_listenerIsNotifiedOnce() {
         // arrange
         networkReceiver = new NetworkReceiver(connectivityManager);
         networkReceiver.addListener(networkListener);

@@ -18,5 +18,7 @@ ext {
     junitVersion = '4.12'
     mockitoVersion = '1.10.19'
     testRunnerVersion = '1.0.2'
-    espressoCoreVersion = '3.0.2'
+    androidSupportTestVersion = '1.0.0'
+    dexmakerVersion = '2.2.0'
+    espressoVersion = '3.0.2'
 }
