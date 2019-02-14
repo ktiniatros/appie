@@ -34,7 +34,7 @@ def versions = [
         dagger    : "2.13",
         retrofit  : "2.5.0",
         androidx  : [
-                appcombat       : "1.0.2",
+                appcombat       : "1.1.0-alpha02",
                 databinding     : "3.2.0-alpha16",
                 coreKtx         : "1.0.1",
                 constraintlayout: "1.1.3",

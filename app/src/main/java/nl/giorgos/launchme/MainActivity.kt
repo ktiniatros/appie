@@ -2,7 +2,7 @@ package nl.giorgos.launchme
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,16 +22,27 @@ class MainActivity : AppCompatActivity() {
         get() = parentJob + Dispatchers.Main
     private val scope = CoroutineScope(coroutineContext)
 
+    private lateinit var viewModel: LaunchListViewModel
+
+    private lateinit var adapter: LaunchAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
 
+        viewModel = ViewModelProviders.of(this).get(LaunchListViewModel::class.java)
+        adapter = LaunchAdapter(viewModel)
+
         setupUI()
 
-        val viewModel = ViewModelProviders.of(this).get(LaunchListViewModel::class.java)
+        viewModel.delegateObserver(this)
+
         scope.launch(Dispatchers.IO) {
-            viewModel.fetch()
+            val newItems = viewModel.fetch()
+            scope.launch {
+                viewModel.items.value = newItems
+            }
         }
     }
 
@@ -39,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.hasFixedSize()
-        recyclerView.adapter = LaunchAdapter()
+        recyclerView.adapter = adapter
         recyclerView.addItemDecoration(DividerItemDecoration(this, layoutManager.orientation))
     }
 

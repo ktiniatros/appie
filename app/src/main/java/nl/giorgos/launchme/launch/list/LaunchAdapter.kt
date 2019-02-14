@@ -1,32 +1,44 @@
 package nl.giorgos.launchme.launch.list
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.launch_item_view.view.titleView
 import nl.giorgos.launchme.R
-import nl.giorgos.launchme.databinding.LaunchItemViewBinding
 import nl.giorgos.launchme.launch.api.Launch
 
-class LaunchAdapter: RecyclerView.Adapter<LaunchAdapter.ItemViewHolder>() {
+class LaunchAdapter(val itemClickListener: ItemClickListener) : RecyclerView.Adapter<LaunchAdapter.ItemViewHolder>() {
 
-    private var items = ArrayList<Launch>()
+    private var items = emptyList<Launch>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ItemViewHolder(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val itemView = inflater.inflate(R.layout.launch_item_view, parent, false)
+        return ItemViewHolder(itemView, itemClickListener)
+    }
 
     override fun getItemCount() = items.count()
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         if (items.size > position) {
-            holder.bind(items[position])
+
+            holder.titleView.text = items.get(position).name
         }
     }
 
-    class ItemViewHolder(
-        private val parent: ViewGroup) : RecyclerView.ViewHolder(parent) {
+    fun setItems(items: List<Launch>) {
+        this.items = items
+        notifyDataSetChanged()
+    }
 
-        fun bind(item: Launch) {
-//            binding.item = item
+    class ItemViewHolder(itemView: View, val itemClickListener: ItemClickListener) : RecyclerView.ViewHolder(itemView) {
+        val titleView = itemView.titleView
+
+        init {
+            itemView.setOnClickListener {
+                itemClickListener.clickedItemOnPosition(adapterPosition)
+            }
         }
     }
 }
