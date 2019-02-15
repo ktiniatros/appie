@@ -6,6 +6,7 @@ import dagger.Component
 import dagger.Module
 import dagger.Provides
 import nl.giorgos.launchme.launch.api.BaseUrl
+import nl.giorgos.launchme.launch.api.LaunchExecutor
 import nl.giorgos.launchme.launch.api.LaunchService
 import nl.giorgos.launchme.launch.list.LaunchListViewModel
 import retrofit2.Retrofit

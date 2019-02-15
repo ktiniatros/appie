@@ -2,6 +2,7 @@ package nl.giorgos.launchme.launch.list
 
 import android.app.Application
 import android.content.Intent
+import android.widget.SearchView
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
@@ -20,7 +21,8 @@ interface ItemClickListener {
 
 class LaunchListViewModel(application: Application) :
     AndroidViewModel(application),
-    ItemClickListener {
+    ItemClickListener,
+    SearchView.OnQueryTextListener {
     // default setup talks via Main Dispatcher(UI Thread)
     private var parentJob = Job()
     private val coroutineContext: CoroutineContext
@@ -36,6 +38,20 @@ class LaunchListViewModel(application: Application) :
         getApplication<LaunchApplication>().appComponent.inject(this)
         fetchItems()
         println("GIO VM created")
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        newText?.toLowerCase()?.let { text ->
+            items.value = if (text.isEmpty())
+                launchRepository.currentLaunches
+            else
+                launchRepository.getLaunchesByMissionName(text)
+        }
+        return true
     }
 
     override fun clickedItemOnPosition(position: Int) {
