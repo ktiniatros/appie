@@ -7,7 +7,9 @@ import dagger.Module
 import dagger.Provides
 import nl.giorgos.launchme.launch.api.BaseUrl
 import nl.giorgos.launchme.launch.api.LaunchExecutor
+import nl.giorgos.launchme.launch.api.LaunchRepository
 import nl.giorgos.launchme.launch.api.LaunchService
+import nl.giorgos.launchme.launch.detail.DetailViewModel
 import nl.giorgos.launchme.launch.list.LaunchListViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -30,10 +32,18 @@ class Modules(private val application: Application) {
     fun providesLaunchService(retrofit: Retrofit): LaunchService {
         return retrofit.create(LaunchService::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun providesLaunchRepository(launchExecutor: LaunchExecutor): LaunchRepository {
+        return LaunchRepository(launchExecutor)
+    }
 }
 
 @Singleton
 @Component(modules = arrayOf(Modules::class))
 interface AppComponent {
     fun inject(launchListViewModel: LaunchListViewModel)
+
+    fun inject(detailViewModel: DetailViewModel)
 }

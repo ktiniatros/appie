@@ -33,6 +33,7 @@ def versions = [
         coroutines: "1.1.1",
         dagger    : "2.13",
         retrofit  : "2.5.0",
+        maps      : "16.1.0",
         androidx  : [
                 appcombat       : "1.1.0-alpha02",
                 databinding     : "3.2.0-alpha16",
@@ -64,6 +65,7 @@ dependencies {
     implementation "com.google.dagger:dagger:$versions.dagger"
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+    implementation "com.google.android.gms:play-services-maps:$versions.maps"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     testImplementation "junit:junit:$versions.testing.junit"
     testImplementation "io.mockk:mockk-common:$versions.testing.mockk"

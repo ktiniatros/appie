@@ -15,4 +15,8 @@ class LaunchRepository @Inject constructor(val launchExecutor: LaunchExecutor) {
             it.name.contains(missionName)
         })
     }.filter { !it.missions.isEmpty() }
+
+    fun findLaunchWithId(id: Int) = currentLaunches.find { launch ->
+        launch.id == id && !launch.location.pads.isEmpty()
+    }
 }

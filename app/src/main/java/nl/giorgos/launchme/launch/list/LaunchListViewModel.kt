@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import nl.giorgos.launchme.LaunchApplication
 import nl.giorgos.launchme.launch.api.Launch
 import nl.giorgos.launchme.launch.api.LaunchRepository
+import nl.giorgos.launchme.launch.detail.DetailActivity
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -21,8 +22,8 @@ interface ItemClickListener {
 
 class LaunchListViewModel(application: Application) :
     AndroidViewModel(application),
-    ItemClickListener,
     SearchView.OnQueryTextListener {
+
     // default setup talks via Main Dispatcher(UI Thread)
     private var parentJob = Job()
     private val coroutineContext: CoroutineContext
@@ -52,11 +53,6 @@ class LaunchListViewModel(application: Application) :
                 launchRepository.getLaunchesByMissionName(text)
         }
         return true
-    }
-
-    override fun clickedItemOnPosition(position: Int) {
-        println("got you: $position")
-        getApplication<LaunchApplication>().startActivity(Intent())
     }
 
     override fun onCleared() {

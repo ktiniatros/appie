@@ -2,4 +2,6 @@
     <string name="app_name">LaunchMe</string>
 
     <string name="search_title">Filter by mission name</string>
+
+    <string name="invalid_launch">This launch has invalid data</string>
 </resources>
