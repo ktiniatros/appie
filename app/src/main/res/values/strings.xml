@@ -4,4 +4,5 @@
     <string name="search_title">Filter by mission name</string>
 
     <string name="invalid_launch">This launch has invalid data</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
