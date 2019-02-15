@@ -7,13 +7,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.recyclerView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import nl.giorgos.launchme.launch.list.LaunchAdapter
 import nl.giorgos.launchme.launch.list.LaunchListViewModel
-import kotlin.coroutines.CoroutineContext
 
 class MainActivity : AppCompatActivity() {
 
