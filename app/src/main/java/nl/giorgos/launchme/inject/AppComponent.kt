@@ -4,6 +4,7 @@ import android.app.Application
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import nl.giorgos.launchme.launch.api.LaunchService
 import nl.giorgos.launchme.launch.api.BaseUrl
 import nl.giorgos.launchme.launch.list.LaunchListViewModel
 import retrofit2.Retrofit
@@ -16,6 +17,11 @@ class Modules(private val application: Application) {
     @Singleton
     fun providesRetrofit(): Retrofit {
         return Retrofit.Builder().baseUrl(BaseUrl).addConverterFactory(GsonConverterFactory.create()).build()
+    }
+
+    @Provides
+    fun providesLaunchService(retrofit: Retrofit): LaunchService {
+        return retrofit.create(LaunchService::class.java)
     }
 }
 

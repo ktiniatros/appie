@@ -16,11 +16,6 @@ import nl.giorgos.launchme.launch.list.LaunchListViewModel
 import kotlin.coroutines.CoroutineContext
 
 class MainActivity : AppCompatActivity() {
-    // default setup talks via Main Dispatcher(UI Thread)
-    private var parentJob = Job()
-    private val coroutineContext: CoroutineContext
-        get() = parentJob + Dispatchers.Main
-    private val scope = CoroutineScope(coroutineContext)
 
     private lateinit var viewModel: LaunchListViewModel
 
@@ -36,14 +31,11 @@ class MainActivity : AppCompatActivity() {
 
         setupUI()
 
-        viewModel.delegateObserver(this)
+        viewModel.items.observe(this, Observer { items ->
+            adapter.setItems(items)
+        })
 
-        scope.launch(Dispatchers.IO) {
-            val newItems = viewModel.fetch()
-            scope.launch {
-                viewModel.items.value = newItems
-            }
-        }
+        println("GIO ACT onCreate")
     }
 
     private fun setupUI() {
@@ -56,6 +48,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        parentJob.cancel()
+        println("GIO ACT onDestroy")
     }
 }

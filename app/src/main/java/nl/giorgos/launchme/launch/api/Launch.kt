@@ -8,7 +8,7 @@ data class Launch(val id: Int, val name: String)
 
 val BaseUrl = "https://launchlibrary.net/1.4/"
 
-interface Api {
+interface LaunchService {
     @GET("launch")
     fun getLaunches(): Call<Response>
 }
