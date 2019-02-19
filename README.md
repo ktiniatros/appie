@@ -8,3 +8,9 @@ The first screen displays the next ten launches in a RecyclerView, which can be 
 The second screen displays the name of the launch  in the actionbar, a map with a marker on the location the launch is taking place and the time remaining until it happens.
 
 Dagger is used to inject our own classes in the android components so we can have more control and test easier with mocks where applicable. Every logic that does not involve Android APIs is separated to plain Kotlin classes so they can be easily unit tested. Espresso is used to test the UI via instrumented tests. At least all the basic features should be tested, eg the user can filter the launches or be able to trigger the next screen. The tests should also be independent of external, out of our control factors, like providing data from an external API, so they can be consistent and not flaky.    
+
+
+
+###### KNOWN ISSUES
+- The map is not working if Google Play Services are not installed or outdated, the map displays a message instead. I'd normally create a friendlier UX to help the user fix this (eg popup that guides him to Settings/Apps/Google Play Services)
+- If you notice logcat, there are some ClassNotFoundExceptions showing up. This is cause of a [bug](https://issuetracker.google.com/issues/120750246) in the currently used AndroidX library. I would not let this to production with using another version of the library or finding another workaround. I consider this out of the scope of this assignment.  
