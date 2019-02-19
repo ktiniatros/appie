@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="list_height">80dp</dimen>
+    <dimen name="list_row_margin">5dp</dimen>
+    <dimen name="list_row_textsize">10sp</dimen>
+
+    <dimen name="timer_text_size">40sp</dimen>
+    <dimen name="marker_text_size">40sp</dimen>
+</resources>

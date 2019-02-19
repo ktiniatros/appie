@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LaunchMe</string>
+
+    <string name="search_title">Filter by mission name</string>
+    <string name="no_missions">No missions available for this launch</string>
+
+    <string name="invalid_launch">This launch has invalid data</string>
+    <string name="map_marker_icon_text">🚀</string>
+</resources>
